@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateTransactionsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Jalankan migrasi.
      *
      * @return void
      */
@@ -15,15 +15,19 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('waste_type');
-            $table->float('weight');
-            $table->integer('coins');
+            $table->unsignedBigInteger('user_id'); // Relasi ke tabel users
+            $table->string('waste_type'); // Jenis sampah
+            $table->decimal('weight', 8, 2); // Berat (kg)
+            $table->integer('coins'); // Jumlah koin
             $table->timestamps();
+
+            // Foreign key ke tabel users
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Hapus migrasi.
      *
      * @return void
      */

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,6 +9,11 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    protected $table = 'transactions'; // Pastikan nama tabel benar
-    protected $fillable = ['waste_type', 'weight', 'coins']; // Sesuaikan dengan kolom di tabel
+    // Jika nama tabel berbeda dari nama model dalam bentuk jamak
+    protected $table = 'transactions';
+
+    // Kolom yang diizinkan untuk diisi secara massal
+    protected $fillable = [
+        'user_id', 'waste_type', 'weight', 'coins',
+    ];
 }

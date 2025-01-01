@@ -13,18 +13,19 @@ class ProfileController extends Controller
 
     public function index()
     {
-        $user = auth()->user(); // Mendapatkan data pengguna yang login
-        $transactions = Transaction::all(); // Mendapatkan semua transaksi
+        $user = auth()->user(); // Dapatkan data pengguna yang sedang login
+        $transactions = Transaction::where('user_id', $user->id)->get(); // Transaksi pengguna
+        $totalCoins = Transaction::where('user_id', $user->id)->sum('coins'); // Total koin pengguna
 
-        return view('profile.index', compact('user', 'transactions'));
+        return view('profile.index', compact('user', 'transactions', 'totalCoins'));
     }
 
     // Mengupdate profil pengguna
     public function edit()
-    {
-        $user = Auth::user(); // Ambil data pengguna yang sedang login
-        return view('profile.index', compact('user'));
-    }
+{
+    $user = auth()->user(); // Ambil data pengguna yang login
+    return view('profile.edit', compact('user')); // Pastikan view 'profile.edit' ada
+}
 
     public function update(Request $request)
     {

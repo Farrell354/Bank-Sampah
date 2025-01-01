@@ -17,11 +17,11 @@
 
             <div class="card mb-4">
                 <div class="card-header bg-success text-white">Profil Pengguna</div>
-
                 <div class="card-body">
                     <p><strong>Nama:</strong> {{ $user->name }}</p>
                     <p><strong>Email:</strong> {{ $user->email }}</p>
-                    <a href="{{ route('profile.index') }}" class="btn btn-primary">Edit Profil</a>
+                    <p><strong>Total Koin:</strong> {{ $totalCoins }} koin</p> <!-- Total Koin -->
+                    <a href="{{ route('profile.edit') }}" class="btn btn-primary">Edit Profil</a>
                 </div>
             </div>
         </div>

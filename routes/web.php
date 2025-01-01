@@ -67,3 +67,4 @@ Route::get('/dashboard', [WasteTransactionController::class, 'index'])->name('da
 
 Route::get('/dashboard', [WasteTransactionController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::post('/waste-transactions/store', [WasteTransactionController::class, 'store'])->name('waste-transactions.store')->middleware('auth');
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
